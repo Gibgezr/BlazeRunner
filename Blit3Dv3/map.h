@@ -1,8 +1,14 @@
 #pragma once
 #include "Blit3D.h"
-#include "Vent.h"
-#include "Player.h"
+#include "Door.h"
 #include "Flame.h"
+#include "Floor.h"
+#include "Space.h"
+#include "Vent.h"
+#include "Wall.h"
+#include "Player.h"
+#include "Exit.h"
+
 #include<string>
 
 #define MAPWIDTH 30

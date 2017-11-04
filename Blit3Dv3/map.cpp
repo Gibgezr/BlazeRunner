@@ -122,37 +122,70 @@ bool TileMap::LoadLevel(std::string filename)
 					assert(0 && "BASE tile? Really?");
 					break;
 				case (int)TileType::FLOOR:
-					theMap[x][y] = new baseTile();
-					theMap[x][y]->tileID = TileType::FLOOR;
+					theMap[x][y] = new FloorTile();
 					break;
-				case '2':
-					theMap[x][y] = new baseTile();
-					theMap[x][y]->tileID = TileType::WALL;
+				case (int)TileType::WALL:
+					theMap[x][y] = new Wall();
 					break;
-				case '3':
-					theMap[x][y] = new baseTile();
-					theMap[x][y]->tileID = TileType::DOORH;
+				case (int)DoorType::R_V_CLOSED:
+					theMap[x][y] = new Door();
+					((Door*)theMap[x][y])->color = (int)DoorColor::RED;
+					((Door*)theMap[x][y])->orientation = (int)DoorOrientation::VERTICAL;
+					((Door*)theMap[x][y])->passable = false;
 					break;
-				case '4':
-					theMap[x][y] = new baseTile();
-					theMap[x][y]->tileID = TileType::DOORV;
+				case (int)DoorType::R_V_OPEN:
+					theMap[x][y] = new Door();
+					((Door*)theMap[x][y])->color = (int)DoorColor::RED;
+					((Door*)theMap[x][y])->orientation = (int)DoorOrientation::VERTICAL;
+					((Door*)theMap[x][y])->passable = true;
 					break;
-				case '5':
-					theMap[x][y] = new baseTile();
-					theMap[x][y]->tileID = TileType::VENT;
+				case (int)DoorType::R_H_CLOSED:
+					theMap[x][y] = new Door();
+					((Door*)theMap[x][y])->color = (int)DoorColor::RED;
+					((Door*)theMap[x][y])->orientation = (int)DoorOrientation::HOREZONTAL;
+					((Door*)theMap[x][y])->passable = false;
 					break;
-				case '6':
-					theMap[x][y] = new baseTile();
-					theMap[x][y]->tileID = TileType::EXIT;
+				case (int)DoorType::R_H_OPEN:
+					theMap[x][y] = new Door();
+					((Door*)theMap[x][y])->color = (int)DoorColor::RED;
+					((Door*)theMap[x][y])->orientation = (int)DoorOrientation::HOREZONTAL;
+					((Door*)theMap[x][y])->passable = true;
+					break;
+				case (int)DoorType::B_V_CLOSED:
+					theMap[x][y] = new Door();
+					((Door*)theMap[x][y])->color = (int)DoorColor::BLUE;
+					((Door*)theMap[x][y])->orientation = (int)DoorOrientation::VERTICAL;
+					((Door*)theMap[x][y])->passable = false;
+					break;
+				case (int)DoorType::B_V_OPEN:
+					theMap[x][y] = new Door();
+					((Door*)theMap[x][y])->color = (int)DoorColor::BLUE;
+					((Door*)theMap[x][y])->orientation = (int)DoorOrientation::VERTICAL;
+					((Door*)theMap[x][y])->passable = true;
+					break;
+				case (int)DoorType::B_H_CLOSED:
+					theMap[x][y] = new Door();
+					((Door*)theMap[x][y])->color = (int)DoorColor::BLUE;
+					((Door*)theMap[x][y])->orientation = (int)DoorOrientation::HOREZONTAL;
+					((Door*)theMap[x][y])->passable = false;
+					break;
+				case (int)DoorType::B_H_OPEN:
+					theMap[x][y] = new Door();
+					((Door*)theMap[x][y])->color = (int)DoorColor::BLUE;
+					((Door*)theMap[x][y])->orientation = (int)DoorOrientation::HOREZONTAL;
+					((Door*)theMap[x][y])->passable = true;
+					break;
+				case (int)TileType::VENT:
+					theMap[x][y] = new Vent();
+					break;
+				case (int)TileType::EXIT:
+					theMap[x][y] = new Exit();
 					break;
 				default:
-
+					assert(0 && "Unknow tile? Really?");
 					break;
 				}
-
 			}
-
-
 		}
 		mapFile.close();
 	}
@@ -167,36 +200,70 @@ void TileMap::SaveLevel(std::string filename)
 	std::ofstream mapFile(filename);
 	if (mapFile.is_open())
 	{
-
+		//mapFile << (int)theMap[x][y]->tileID;
 		for (int y = 0; y < MAPHEIGHT; ++y)
 		{
 			for (int x = 0; x < MAPWIDTH; ++x)
 			{
-				//TileType{ BASE, SPACE, FLOOR, WALL, DOORH, DOORV, VENT, EXIT };
-				switch (theMap[x][y]->tileID) {
-				case TileType::SPACE:
-					mapFile << (int)theMap[x][y]->tileID;
+				//TileType { BASE, SPACE, FLOOR, WALL, VENT, EXIT, DOOR, END_ENUM};
+				switch ((int)theMap[x][y]->tileID) {
+				case  (int)TileType::DOOR:
+				{
+					Door* door = (Door*)theMap[x][y];
+					if (door->passable)
+					{
+						if (door->orientation == (int)DoorOrientation::VERTICAL)
+						{
+							if (door->color == (int)DoorColor::RED)
+							{
+								mapFile << (int)DoorType::R_V_OPEN << " ";
+							}
+							else
+							{
+								mapFile << (int)DoorType::B_V_OPEN << " ";
+							}
+						}
+						else
+						{
+							if (door->color == (int)DoorColor::RED)
+							{
+								mapFile << (int)DoorType::R_H_OPEN << " ";
+							}
+							else
+							{
+								mapFile << (int)DoorType::B_H_OPEN << " ";
+							}
+						}
+					}
+					else
+					{
+						if (door->orientation == (int)DoorOrientation::VERTICAL)
+						{
+							if (door->color == (int)DoorColor::RED)
+							{
+								mapFile << (int)DoorType::R_V_CLOSED << " ";
+							}
+							else
+							{
+								mapFile << (int)DoorType::B_V_CLOSED << " ";
+							}
+						}
+						else
+						{
+							if (door->color == (int)DoorColor::RED)
+							{
+								mapFile << (int)DoorType::R_H_CLOSED << " ";
+							}
+							else
+							{
+								mapFile << (int)DoorType::B_H_CLOSED << " ";
+							}
+						}
+					}
 					break;
-				case  TileType::FLOOR:
-					mapFile << '2';
-					break;
-				case  TileType::WALL:
-					mapFile << '3';
-					break;
-				case  TileType::DOORH:
-					mapFile << '4';
-					break;
-				case  TileType::DOORV:
-					mapFile << '5';
-					break;
-				case  TileType::VENT:
-					mapFile << '6';
-					break;
-				case  TileType::EXIT:
-					mapFile << '7';
-					break;
+				}
 				default:
-
+					mapFile << (int)theMap[x][y]->tileID << " ";
 					break;
 				}
 			}

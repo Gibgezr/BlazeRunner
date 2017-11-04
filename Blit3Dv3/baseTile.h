@@ -1,7 +1,7 @@
 #pragma once
 #include "Blit3D.h"
 
-enum class TileType { BASE, SPACE, FLOOR, WALL, DOORH, DOORV, VENT, EXIT };
+enum class TileType { BASE, SPACE, FLOOR, WALL, VENT, EXIT, DOOR, END_ENUM};
 
 class baseTile
 {

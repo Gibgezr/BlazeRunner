@@ -1,9 +1,10 @@
 #pragma once
 #include "baseTile.h"
 
-
-class FloorTile : public baseTile
+class Exit : public baseTile
 {
 public:
-	FloorTile();
+	Exit();
+	~Exit();
 };
+

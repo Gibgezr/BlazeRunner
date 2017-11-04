@@ -4,10 +4,10 @@
 //memory leak detection
 #define CRTDBG_MAP_ALLOC
 #ifdef _DEBUG
-	#ifndef DBG_NEW
-		#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
-		#define new DBG_NEW
-	#endif
+#ifndef DBG_NEW
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+#define new DBG_NEW
+#endif
 #endif  // _DEBUG
 
 #include <stdlib.h>
@@ -31,16 +31,16 @@ void Init()
 {
 	tileMap = new TileMap();
 
-	Sprite* hdoor = blit3D->MakeSprite(0, 0, 64, 64, "Media\\H_Door_Close.png");
+	Sprite* hdoor = blit3D->MakeSprite(0, 0, 64, 64, "D:\\VisualStudio2017\\GitHub\\BlazeRunner\\Blit3Dv3\\Media\\H_Door_Blue_Close-1.png");
 
 	tileMap->LoadLevel("level1.txt");
-	
-	for(int y = 0; y < MAPHEIGHT; ++y)
+
+	for (int y = 0; y < MAPHEIGHT; ++y)
 		for (int x = 0; x < MAPWIDTH; ++x)
 		{
-			switch (tileMap->theMap[x][y]->tileID)
+			switch ((int)tileMap->theMap[x][y]->tileID)
 			{
-			case TileType::DOORH:
+			case (int)TileType::FLOOR:
 				tileMap->theMap[x][y]->sprite = hdoor;
 				break;
 
@@ -79,13 +79,13 @@ void Draw(void)
 
 	//draw stuff here
 	tileMap->Draw();
-	
+
 }
 
 //the key codes/actions/mods for DoInput are from GLFW: check its documentation for their values
 void DoInput(int key, int scancode, int action, int mods)
 {
-	if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		blit3D->Quit(); //start the shutdown sequence
 }
 
