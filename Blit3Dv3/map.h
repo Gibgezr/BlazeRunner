@@ -3,13 +3,6 @@
 #include "Vent.h"
 #include "Player.h"
 #include "Flame.h"
-#include "Floor.h"
-#include "DoorH.h"
-#include "DoorV.h"
-#include "Exit.h"
-#include "Space.h"
-#include "Wall.h"
-
 #include<string>
 
 #define MAPWIDTH 30

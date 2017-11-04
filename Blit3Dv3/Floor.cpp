@@ -1,6 +1,6 @@
 #include "Floor.h"
 
-Floor::Floor()
+FloorTile::FloorTile()
 {
 	tileID = TileType::FLOOR;
 	passable = true;
