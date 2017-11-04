@@ -180,11 +180,17 @@
     <ClCompile Include="Blit3DBaseFiles\GLFW\win32_tls.c" />
     <ClCompile Include="Blit3DBaseFiles\GLFW\win32_window.c" />
     <ClCompile Include="Blit3DBaseFiles\GLFW\window.c" />
+    <ClCompile Include="Flame.cpp" />
+    <ClCompile Include="Floor.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="map.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Blit3DBaseFiles\GLEW\GL\glew.h" />
     <ClInclude Include="Blit3DBaseFiles\GLEW\GL\wglew.h" />
+    <ClInclude Include="Flame.h" />
+    <ClInclude Include="Floor.h" />
+    <ClInclude Include="map.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
