@@ -19,6 +19,7 @@
 
 Blit3D *blit3D = NULL;
 
+
 //GLOBAL DATA
 Sprite *backgroundSprite = NULL; //a pointer to a background sprite
 Sprite *heartSprite = NULL;		//a pointer to a heart-shaped sprite

@@ -206,4 +206,5 @@ void TileMap::SaveLevel(std::string filename)
 		mapFile.close();
 	}
 	else std::cout << "Unable to open file";
+
 }
