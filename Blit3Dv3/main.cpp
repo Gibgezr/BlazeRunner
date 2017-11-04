@@ -45,11 +45,17 @@ Sprite* door_Blue_V_Closed_Sprite;
 Sprite* door_Blue_H_Open_Sprite;
 Sprite* door_Blue_H_Closed_Sprite;
 
+Sprite *flame1;
+
+
 void Init()
 {
 	tileMap = new TileMap();
-	//make player
 
+	flame1 = blit3D->MakeSprite(0, 0, 64, 64, "Media\\Fire_Fix_Frame_1.png");
+
+	tileMap->flame.spriteList.push_back(flame1);
+	//make player
 
 	playerSpriteFront = blit3D->MakeSprite(0, 0, 64, 64, "Media\\Character_Idle_Front.png");
 	playerSpriteBack = blit3D->MakeSprite(0, 0, 64, 64, "Media\\Character_Idle_Back.png");
@@ -175,6 +181,20 @@ void Draw(void)
 
 }
 
+bool canMove(int x, int y)
+{
+	if (x < 0 || y < 0)
+		return false;
+
+	if (x >= MAPWIDTH || y >= MAPHEIGHT)
+		return false;
+
+	if (tileMap->theMap[x][y]->passable)
+		return true;
+	else
+		return false;
+
+}
 //the key codes/actions/mods for DoInput are from GLFW: check its documentation for their values
 void DoInput(int key, int scancode, int action, int mods)
 {
@@ -182,21 +202,82 @@ void DoInput(int key, int scancode, int action, int mods)
 	{
 		blit3D->Quit(); //start the shutdown sequence
 	}
-	else if (key == GLFW_KEY_W && action == GLFW_PRESS)
+	else if (key == GLFW_KEY_W && action == GLFW_RELEASE)
 	{
+		int tempY = tileMap->player.y - 1;
+		int tempX = tileMap->player.x;
+		if (canMove(tempX, tempY))
+		{
+			tileMap->player.y = tempY;
+		}
 
 	}
-	else if (key == GLFW_KEY_A && action == GLFW_PRESS)
+	else if (key == GLFW_KEY_A && action == GLFW_RELEASE)
 	{
-
+		int tempY = tileMap->player.y;
+		int tempX = tileMap->player.x - 1;
+		if (canMove(tempX, tempY))
+		{
+			tileMap->player.x = tempX;
+		}
 	}
-	else if (key == GLFW_KEY_S && action == GLFW_PRESS)
+	else if (key == GLFW_KEY_S && action == GLFW_RELEASE)
 	{
-
+		int tempY = tileMap->player.y + 1;
+		int tempX = tileMap->player.x;
+		if (canMove(tempX, tempY))
+		{
+			tileMap->player.y = tempY;
+		}
 	}
-	else if (key == GLFW_KEY_D && action == GLFW_PRESS)
+	else if (key == GLFW_KEY_D && action == GLFW_RELEASE)
 	{
+		int tempY = tileMap->player.y;
+		int tempX = tileMap->player.x + 1;
+		if (canMove(tempX, tempY))
+		{
+			tileMap->player.x = tempX;
+		}
+	}
+	else if (key == GLFW_KEY_SPACE && action == GLFW_RELEASE)
+	{
+		//toggle door?
 
+		int offsetX[4] = { -1,1,0,0 };
+		int offsetY[4] = { 0,0,-1,1 };
+
+		for (int i = 0; i < 4; ++i)
+		{
+			int tempX = tileMap->player.x + offsetX[i];
+			int tempY = tileMap->player.y + offsetY[i];
+
+			if ((int)tileMap->theMap[tempX][tempY]->tileID == (int)TileType::DOOR)
+			{
+				Door* door = (Door *)tileMap->theMap[tempX][tempY];
+				int doorcolor = door->color;
+
+				for (int y = 0; y < MAPHEIGHT; ++y)
+					for (int x = 0; x < MAPHEIGHT; ++x)
+					{
+						if ((int)tileMap->theMap[x][y]->tileID == (int)TileType::DOOR)
+						{
+							Door* tdoor = (Door*)tileMap->theMap[x][y];
+							if (tdoor->color == doorcolor)
+							{
+								tdoor->passable = !tdoor->passable;
+							}
+						}
+					}
+			}
+		}
+
+		for(int y = 0; y < MAPHEIGHT; ++y)
+			for (int x = 0; x < MAPHEIGHT; ++x)
+			{
+				tileMap->theMap[x][y]->onFire = false;
+			}
+
+		tileMap->SpreadFire();
 	}
 
 }

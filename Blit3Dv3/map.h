@@ -25,10 +25,12 @@ public:
 	Flame flame;
 	Player player;
 
+	std::vector<Vent> vent;
+
 	bool drawnPlayer1StTime = false;
 	void Draw(); //draws all tiles and the flames
 	void Update(float seconds); //updates animations for tiles and flame
-	bool SpreadFire(std::vector<Vent> vent); //returns true if player dies
+	bool SpreadFire(); //returns true if player dies
 	bool isPlayerOnFlame(int nowX, int nowY);// return true if player is on fire
 	bool LoadLevel(std::string filename); //returns false if it can't load the file
 	void SaveLevel(std::string filename);

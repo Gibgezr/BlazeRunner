@@ -50,7 +50,7 @@ void TileMap::Update(float seconds)
 	player.Update(seconds);
 }
 
-bool TileMap::SpreadFire(std::vector<Vent> vent)
+bool TileMap::SpreadFire()
 {
 
 	bool touchedPlayer = false;
@@ -184,7 +184,13 @@ bool TileMap::LoadLevel(std::string filename)
 					((Door*)theMap[x][y])->passable = true;
 					break;
 				case (int)TileType::VENT:
+				{
 					theMap[x][y] = new Vent();
+					Vent v;
+					v.x = x;
+					v.y = y;
+					vent.push_back(v);
+				}
 					break;
 				case (int)TileType::EXIT:
 					theMap[x][y] = new Exit();
@@ -196,10 +202,9 @@ bool TileMap::LoadLevel(std::string filename)
 			}
 		}
 		//set player location
-		mapFile >> tileNum;
-		player.x = tileNum * TILESIZE + TILESIZE / 2; 
-		mapFile >> tileNum;
-		player.y = tileNum * TILESIZE + TILESIZE / 2;
+		mapFile >> player.x;
+		mapFile >> player.y;
+	
 		mapFile.close();
 	}
 
