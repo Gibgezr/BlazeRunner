@@ -1,5 +1,4 @@
 #include "map.h"
-#include<cassert>
 
 baseTile::baseTile()
 {
@@ -176,25 +175,25 @@ void TileMap::SaveLevel(std::string filename)
 				//TileType{ BASE, SPACE, FLOOR, WALL, DOORH, DOORV, VENT, EXIT };
 				switch (theMap[x][y]->tileID) {
 				case TileType::SPACE:
-					mapFile << '0';
+					mapFile << (int)theMap[x][y]->tileID;
 					break;
 				case  TileType::FLOOR:
-					mapFile << '1';
-					break;
-				case  TileType::WALL:
 					mapFile << '2';
 					break;
-				case  TileType::DOORH:
+				case  TileType::WALL:
 					mapFile << '3';
 					break;
-				case  TileType::DOORV:
+				case  TileType::DOORH:
 					mapFile << '4';
 					break;
-				case  TileType::VENT:
+				case  TileType::DOORV:
 					mapFile << '5';
 					break;
-				case  TileType::EXIT:
+				case  TileType::VENT:
 					mapFile << '6';
+					break;
+				case  TileType::EXIT:
+					mapFile << '7';
 					break;
 				default:
 
