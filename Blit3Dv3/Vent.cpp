@@ -6,5 +6,4 @@ Vent::Vent()
 	int x = 0;
 	int y = 0;
 	passable = false; 
-
 }

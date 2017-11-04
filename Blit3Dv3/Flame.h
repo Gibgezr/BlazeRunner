@@ -1,6 +1,7 @@
 #pragma once
-#include<vector>
 #include "Blit3D.h"
+#include<vector>
+
 
 class Flame
 {

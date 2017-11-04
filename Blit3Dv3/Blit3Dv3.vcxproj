@@ -192,6 +192,7 @@
     <ClInclude Include="Blit3DBaseFiles\GLEW\GL\wglew.h" />
     <ClInclude Include="Flame.h" />
     <ClInclude Include="Floor.h" />
+    <ClInclude Include="baseTile.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Vent.h" />

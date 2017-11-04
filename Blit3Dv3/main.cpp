@@ -13,9 +13,9 @@
 #include <stdlib.h>
 #include <crtdbg.h>
 
+#include "map.h"
 #include "Blit3D.h"
 
-#include "map.h"
 
 Blit3D *blit3D = NULL;
 
