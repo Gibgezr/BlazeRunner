@@ -46,9 +46,6 @@
     <Filter Include="Resource Files\Media\Sound\Challenge">
       <UniqueIdentifier>{bce77c51-948b-49ff-86c9-46a9058c14d6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\WWise">
-      <UniqueIdentifier>{2cca07df-b7ec-4805-bede-7b18862d458b}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Blit3DBaseFiles\GLFW\context.c">
@@ -147,27 +144,6 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AudioEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Common\AkFilePackageLUT.cpp">
-      <Filter>Source Files\WWise</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Win32\AkDefaultIOHookBlocking.cpp">
-      <Filter>Source Files\WWise</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Win32\AkDefaultIOHookDeferred.cpp">
-      <Filter>Source Files\WWise</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Common\AkDefaultLowLevelIODispatcher.cpp">
-      <Filter>Source Files\WWise</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Common\AkFileLocationBase.cpp">
-      <Filter>Source Files\WWise</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Common\AkFilePackage.cpp">
-      <Filter>Source Files\WWise</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Blit3DBaseFiles\GLEW\GL\glew.h">
@@ -194,9 +170,6 @@
     <ClInclude Include="baseTile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AudioEngine.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="level1.txt">
@@ -221,6 +194,30 @@
     </Image>
     <Image Include="Media\vegetation_sunflower_03.png">
       <Filter>Resource Files\Media\Art\challeng</Filter>
+    </Image>
+    <Image Include="allSprites_default.png">
+      <Filter>Resource Files\Media\Art</Filter>
+    </Image>
+    <Image Include="bark.jpeg">
+      <Filter>Resource Files\Media\Art</Filter>
+    </Image>
+    <Image Include="doors.png">
+      <Filter>Resource Files\Media\Art</Filter>
+    </Image>
+    <Image Include="Logo.png">
+      <Filter>Resource Files\Media\Art</Filter>
+    </Image>
+    <Image Include="SleekBars.png">
+      <Filter>Resource Files\Media\Art</Filter>
+    </Image>
+    <Image Include="spritesheet.png">
+      <Filter>Resource Files\Media\Art</Filter>
+    </Image>
+    <Image Include="vegetation_leaf_dry_01.png">
+      <Filter>Resource Files\Media\Art</Filter>
+    </Image>
+    <Image Include="vegetation_sunflower_03.png">
+      <Filter>Resource Files\Media\Art</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
@@ -410,5 +407,13 @@
     <Media Include="Media\PlayerDeath4.wav">
       <Filter>Resource Files\Media\Sound</Filter>
     </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Init.bnk">
+      <Filter>Resource Files\Media\Art</Filter>
+    </None>
+    <None Include="MainBank.bnk">
+      <Filter>Resource Files\Media\Art</Filter>
+    </None>
   </ItemGroup>
 </Project>

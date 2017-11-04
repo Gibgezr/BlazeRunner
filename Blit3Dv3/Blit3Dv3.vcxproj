@@ -155,13 +155,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Common\AkDefaultLowLevelIODispatcher.cpp" />
-    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Common\AkFileLocationBase.cpp" />
-    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Common\AkFilePackage.cpp" />
-    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Common\AkFilePackageLUT.cpp" />
-    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Win32\AkDefaultIOHookBlocking.cpp" />
-    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Win32\AkDefaultIOHookDeferred.cpp" />
-    <ClCompile Include="AudioEngine.cpp" />
     <ClCompile Include="Blit3DBaseFiles\Blit3D\AngelcodeFont.cpp" />
     <ClCompile Include="Blit3DBaseFiles\Blit3D\BFont.cpp" />
     <ClCompile Include="Blit3DBaseFiles\Blit3D\Blit3D.cpp" />
@@ -196,7 +189,6 @@
     <ClCompile Include="Vent.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AudioEngine.h" />
     <ClInclude Include="Blit3DBaseFiles\GLEW\GL\glew.h" />
     <ClInclude Include="Blit3DBaseFiles\GLEW\GL\wglew.h" />
     <ClInclude Include="Flame.h" />
@@ -210,12 +202,20 @@
     <Text Include="level1.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="allSprites_default.png" />
+    <Image Include="bark.jpeg" />
+    <Image Include="doors.png" />
+    <Image Include="Logo.png" />
     <Image Include="Media\allSprites_default.png" />
     <Image Include="Media\bark.jpeg" />
     <Image Include="Media\doors.png" />
     <Image Include="Media\SleekBars.png" />
     <Image Include="Media\vegetation_leaf_dry_01.png" />
     <Image Include="Media\vegetation_sunflower_03.png" />
+    <Image Include="SleekBars.png" />
+    <Image Include="spritesheet.png" />
+    <Image Include="vegetation_leaf_dry_01.png" />
+    <Image Include="vegetation_sunflower_03.png" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Media\AlarmSound.wav" />
@@ -280,6 +280,10 @@
     <Media Include="Media\TECH INTERFACE Wacky Machine Beeps Short 11.wav" />
     <Media Include="Media\TECH INTERFACE Wacky Machine Beeps Short 12.wav" />
     <Media Include="Media\Video_6.MOV" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Init.bnk" />
+    <None Include="MainBank.bnk" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
