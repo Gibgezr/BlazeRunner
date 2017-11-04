@@ -1,4 +1,5 @@
 #include "map.h"
+#include<cassert>
 
 baseTile::baseTile()
 {
@@ -108,20 +109,20 @@ bool TileMap::LoadLevel(std::string filename)
 	std::string row;
 	std::ifstream mapFile(filename);
 	if (mapFile.is_open())
-	{
-		while (getline(mapFile, row))
-		{
+	{		
 			for (int y = 0; y < MAPHEIGHT; ++y)
 			{
 				for (int x = 0; x < MAPWIDTH; ++x)
 				{
+					int tileNum = 0;
+					mapFile >> tileNum;
 					//TileType{ BASE, SPACE, FLOOR, WALL, DOORH, DOORV, VENT, EXIT };
-					switch (row.c_str()[x]) {
-					case '0':
-						theMap[x][y] = new baseTile();
-						theMap[x][y]->tileID = TileType::SPACE;
+					switch (tileNum) 
+					{
+					case (int)TileType::BASE:
+						assert(0 && "BASE tile? Really?");
 						break;
-					case '1':
+						case (int)TileType::FLOOR
 						theMap[x][y] = new baseTile();
 						theMap[x][y]->tileID = TileType::FLOOR;
 						break;
@@ -151,7 +152,7 @@ bool TileMap::LoadLevel(std::string filename)
 					}
 
 				}
-			}
+			
 
 		}
 		mapFile.close();
