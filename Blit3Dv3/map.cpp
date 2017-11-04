@@ -71,7 +71,7 @@ bool TileMap::SpreadFire()
 			nowX = x + xOffSet[dir];
 			nowY = y + yOffSet[dir];
 
-			if (nowX < MAPWIDTH && nowY < MAPHEIGHT)
+			if (nowX < MAPWIDTH && nowY < MAPHEIGHT && nowX >= 0 && nowY >= 0)
 			{
 				// passable tile but Not on flame
 				if (theMap[nowX][nowY]->passable == true && theMap[nowX][nowY]->onFire == false)
@@ -87,14 +87,40 @@ bool TileMap::SpreadFire()
 				// passable tile but Not on flame
 				else if (theMap[nowX][nowY]->passable == true && theMap[nowX][nowY]->onFire == true)
 				{
+					theMap[nowX][nowY]->onFire = true;
 					// check if player is on fire
 					touchedPlayer = isPlayerOnFlame(nowX, nowY);
+
 					if (touchedPlayer)
 						break;
 				}
 			}
 		}
 	}
+
+	for(int y = 0; y < MAPHEIGHT; ++y)
+		for (int x = 0; x < MAPHEIGHT; ++x)
+		{
+			if (theMap[x][y]->onFire)
+			{
+				for (int dir = 0; dir < 4; ++dir)
+				{
+					nowX = x + xOffSet[dir];
+					nowY = y + yOffSet[dir];
+					if (nowX < MAPWIDTH && nowY < MAPHEIGHT && nowX >= 0 && nowY >= 0)
+					{
+						if (theMap[nowX][nowY]->onFire != true && theMap[nowX][nowY]->passable)
+						{
+							theMap[nowX][nowY]->onFire = true;
+							if (player.x == nowX && player.y == nowY) touchedPlayer = true;
+							x = y = 0;
+							continue;
+						}
+					}
+
+				}
+			}
+		}
 	return touchedPlayer;
 }
 
@@ -291,4 +317,15 @@ void TileMap::SaveLevel(std::string filename)
 	}
 	else std::cout << "Unable to open file";
 
+}
+
+TileMap::~TileMap()
+{
+	for (int y = 0; y < MAPHEIGHT; ++y)
+	{
+		for (int x = 0; x < MAPWIDTH; ++x)
+		{
+			delete theMap[x][y];
+		}
+	}
 }

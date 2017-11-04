@@ -34,4 +34,5 @@ public:
 	bool isPlayerOnFlame(int nowX, int nowY);// return true if player is on fire
 	bool LoadLevel(std::string filename); //returns false if it can't load the file
 	void SaveLevel(std::string filename);
+	~TileMap();
 };
