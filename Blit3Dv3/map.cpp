@@ -1,5 +1,4 @@
 #include "map.h"
-#include<cassert>
 
 baseTile::baseTile()
 {
@@ -110,6 +109,47 @@ bool TileMap::LoadLevel(std::string filename)
 	std::ifstream mapFile(filename);
 	if (mapFile.is_open())
 	{
+		while (getline(mapFile, row))
+		{
+			for (int y = 0; y < MAPHEIGHT; ++y)
+			{
+				for (int x = 0; x < MAPWIDTH; ++x)
+				{
+					//TileType{ BASE, SPACE, FLOOR, WALL, DOORH, DOORV, VENT, EXIT };
+					switch (row.c_str()[x]) {
+					case '0':
+						theMap[x][y] = new baseTile();
+						theMap[x][y]->tileID = TileType::SPACE;
+						break;
+					case '1':
+						theMap[x][y] = new baseTile();
+						theMap[x][y]->tileID = TileType::FLOOR;
+						break;
+					case '2':
+						theMap[x][y] = new baseTile();
+						theMap[x][y]->tileID = TileType::WALL;
+						break;
+					case '3':
+						theMap[x][y] = new baseTile();
+						theMap[x][y]->tileID = TileType::DOORH;
+						break;
+					case '4':
+						theMap[x][y] = new baseTile();
+						theMap[x][y]->tileID = TileType::DOORV;
+						break;
+					case '5':
+						theMap[x][y] = new baseTile();
+						theMap[x][y]->tileID = TileType::VENT;
+						break;
+					case '6':
+						theMap[x][y] = new baseTile();
+						theMap[x][y]->tileID = TileType::EXIT;
+						break;
+					default:
+
+						break;
+					}
+	{
 		for (int y = 0; y < MAPHEIGHT; ++y)
 		{
 			for (int x = 0; x < MAPWIDTH; ++x)
@@ -148,6 +188,7 @@ bool TileMap::LoadLevel(std::string filename)
 					break;
 				}
 
+				}
 			}
 
 		}
