@@ -22,14 +22,17 @@ void baseTile::Draw(float x, float y)
 
 void TileMap::Draw()
 {
+
 	for (int y = 0; y < MAPHEIGHT; ++y)
 	{
 		for (int x = 0; x < MAPWIDTH; ++x)
 		{
 			theMap[x][y]->Draw(x * TILESIZE + TILESIZE / 2, 1080 - (y * TILESIZE + TILESIZE / 2 + 25));
-			if (theMap[x][y]->onFire) flame.Draw(x * TILESIZE + TILESIZE / 2, 1080 - (y * TILESIZE + TILESIZE / 2 + 25));
+			if (theMap[x][y]->onFire)
+				flame.Draw(x * TILESIZE + TILESIZE / 2, 1080 - (y * TILESIZE + TILESIZE / 2 + 25));
 		}
 	}
+	player.Draw();
 }
 
 void TileMap::Update(float seconds)
@@ -43,6 +46,8 @@ void TileMap::Update(float seconds)
 			theMap[x][y]->Update(seconds);
 		}
 	}
+
+	player.Update(seconds);
 }
 
 bool TileMap::SpreadFire(std::vector<Vent> vent)
@@ -107,19 +112,22 @@ bool TileMap::LoadLevel(std::string filename)
 {
 	std::string row;
 	std::ifstream mapFile(filename);
+	int tileNum = 0;
 	if (mapFile.is_open())
 	{
 		for (int y = 0; y < MAPHEIGHT; ++y)
 		{
 			for (int x = 0; x < MAPWIDTH; ++x)
 			{
-				int tileNum = 0;
 				mapFile >> tileNum;
-				//TileType{ BASE, SPACE, FLOOR, WALL, DOORH, DOORV, VENT, EXIT };
+				//TileType { BASE=0, SPACE, FLOOR, WALL, VENT, EXIT, DOOR, END_ENUM};
 				switch (tileNum)
 				{
 				case (int)TileType::BASE:
-					assert(0 && "BASE tile? Really?");
+					assert(tileNum && "BASE tile? Really?");
+					break;
+				case (int)TileType::SPACE:
+					theMap[x][y] = new Space();
 					break;
 				case (int)TileType::FLOOR:
 					theMap[x][y] = new FloorTile();
@@ -182,11 +190,16 @@ bool TileMap::LoadLevel(std::string filename)
 					theMap[x][y] = new Exit();
 					break;
 				default:
-					assert(0 && "Unknow tile? Really?");
+					assert(tileNum && "Unknow tile? Really?");
 					break;
 				}
 			}
 		}
+		//set player location
+		mapFile >> tileNum;
+		player.x = tileNum * TILESIZE + TILESIZE / 2; 
+		mapFile >> tileNum;
+		player.y = tileNum * TILESIZE + TILESIZE / 2;
 		mapFile.close();
 	}
 

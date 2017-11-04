@@ -24,6 +24,8 @@ public:
 	baseTile* theMap[MAPWIDTH][MAPHEIGHT] = { NULL };
 	Flame flame;
 	Player player;
+
+	bool drawnPlayer1StTime = false;
 	void Draw(); //draws all tiles and the flames
 	void Update(float seconds); //updates animations for tiles and flame
 	bool SpreadFire(std::vector<Vent> vent); //returns true if player dies

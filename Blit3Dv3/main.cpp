@@ -21,40 +21,133 @@ Blit3D *blit3D = NULL;
 
 
 //GLOBAL DATA
-Sprite *backgroundSprite = NULL; //a pointer to a background sprite
-Sprite *heartSprite = NULL;		//a pointer to a heart-shaped sprite
 float angle = 0; //for rotating the hearts
 
 TileMap* tileMap;
+Sprite* playerSpriteFront;
+Sprite* playerSpriteBack;
+Sprite* playerSpriteLeft;
+Sprite* playerSpriteRight;
+
+Sprite* spaceSprite;
+Sprite* floorSprite;
+Sprite* wallSprite;
+Sprite* ventSprite;
+Sprite* exitSprite;
+
+Sprite* door_Red_V_Open_Sprite;
+Sprite* door_Red_V_Closed_Sprite;
+Sprite* door_Red_H_Open_Sprite;
+Sprite* door_Red_H_Closed_Sprite;
+
+Sprite* door_Blue_V_Open_Sprite;
+Sprite* door_Blue_V_Closed_Sprite;
+Sprite* door_Blue_H_Open_Sprite;
+Sprite* door_Blue_H_Closed_Sprite;
 
 void Init()
 {
 	tileMap = new TileMap();
+	//make player
 
-	Sprite* hdoor = blit3D->MakeSprite(0, 0, 64, 64, "D:\\VisualStudio2017\\GitHub\\BlazeRunner\\Blit3Dv3\\Media\\H_Door_Blue_Close-1.png");
+
+	playerSpriteFront = blit3D->MakeSprite(0, 0, 64, 64, "Media\\Character_Idle_Front.png");
+	playerSpriteBack = blit3D->MakeSprite(0, 0, 64, 64, "Media\\Character_Idle_Back.png");
+	playerSpriteLeft = blit3D->MakeSprite(0, 0, 64, 64, "Media\\Character_Idle_Left.png");
+	playerSpriteRight = blit3D->MakeSprite(0, 0, 64, 64, "Media\\Character_Idle_Right.png");
+	tileMap->player.sprite = playerSpriteFront;
+
+
+	door_Blue_H_Closed_Sprite = blit3D->MakeSprite(0, 0, 64, 64, "Media\\H_Door_Blue_Close-1.png");
+	door_Blue_H_Open_Sprite = blit3D->MakeSprite(0, 0, 64, 64, "Media\\H_Door_Blue_Open.png");
+	door_Blue_V_Closed_Sprite = blit3D->MakeSprite(0, 0, 64, 64, "Media\\V_Door_Blue_Close-1.png");
+	door_Blue_V_Open_Sprite = blit3D->MakeSprite(0, 0, 64, 64, "Media\\V_Door_Blue_Open.png");
+
+	door_Red_H_Closed_Sprite = blit3D->MakeSprite(0, 0, 64, 64, "Media\\H_Door_Red_Close-1.png");
+	door_Red_H_Open_Sprite = blit3D->MakeSprite(0, 0, 64, 64, "Media\\H_Door_Red_Open.png");
+	door_Red_V_Closed_Sprite = blit3D->MakeSprite(0, 0, 64, 64, "Media\\V_Door_Red_Close-1.png");
+	door_Red_V_Open_Sprite = blit3D->MakeSprite(0, 0, 64, 64, "Media\\V_Door_Red_Open.png");
+
+	spaceSprite = blit3D->MakeSprite(0, 0, 64, 64, "Media\\Space_Tile_A.png");
+	floorSprite = blit3D->MakeSprite(0, 0, 64, 64, "Media\\Floor_Tile_Base.png");
+	wallSprite = blit3D->MakeSprite(0, 0, 64, 64, "Media\\Wall_Tile_A.png");
+	ventSprite = blit3D->MakeSprite(0, 0, 64, 64, "Media\\Vent_Tile_Glow.png");
+	exitSprite = blit3D->MakeSprite(0, 0, 64, 64, "Media\\Exit_Tile.png");
 
 	tileMap->LoadLevel("level1.txt");
+
+	//for (int y = 0; y < MAPHEIGHT; ++y)
+	//	for (int x = 0; x < MAPWIDTH; ++x)
+	//	{
+	//		tileMap->theMap[x][y] = new FloorTile;
+	//		tileMap->theMap[x][y]->tileID = TileType::FLOOR;
+	//	}
 
 	for (int y = 0; y < MAPHEIGHT; ++y)
 		for (int x = 0; x < MAPWIDTH; ++x)
 		{
-			switch ((int)tileMap->theMap[x][y]->tileID)
+			switch (tileMap->theMap[x][y]->tileID)
 			{
-			case (int)TileType::FLOOR:
-				tileMap->theMap[x][y]->sprite = hdoor;
+			case TileType::DOOR:
+			{
+				Door* door = (Door*)tileMap->theMap[x][y];
+
+				if (door->color == (int)DoorColor::RED)
+				{
+					if (door->orientation == (int)DoorOrientation::HOREZONTAL)
+					{
+						door->sprite = door_Red_H_Closed_Sprite;
+						door->open = door_Red_H_Open_Sprite;
+					}
+					else
+					{
+						door->sprite = door_Red_V_Closed_Sprite;
+						door->open = door_Red_V_Open_Sprite;
+					}
+				}
+				else
+				{
+					if (door->orientation == (int)DoorOrientation::HOREZONTAL)
+					{
+						door->sprite = door_Blue_H_Closed_Sprite;
+						door->open = door_Blue_H_Open_Sprite;
+					}
+					else
+					{
+						door->sprite = door_Blue_V_Closed_Sprite;
+						door->open = door_Blue_V_Open_Sprite;
+					}
+				}
+			}
+			break;
+
+			case TileType::SPACE:
+				tileMap->theMap[x][y]->sprite = spaceSprite;
 				break;
 
+			case TileType::FLOOR:
+				tileMap->theMap[x][y]->sprite = floorSprite;
+				break;
+
+			case TileType::WALL:
+				tileMap->theMap[x][y]->sprite = wallSprite;
+				break;
+
+			case TileType::VENT:
+				tileMap->theMap[x][y]->sprite = ventSprite;
+				break;
+
+			case TileType::EXIT:
+				tileMap->theMap[x][y]->sprite = exitSprite;
+				break;
 
 			default:
 				assert(false && "Unknown tile id!");
 				break;
 			}
 		}
-
-	tileMap->flame.spriteList.push_back(hdoor);
-	tileMap->flame.spriteList.push_back(hdoor);
-	tileMap->flame.spriteList.push_back(hdoor);
 }
+
 
 void DeInit(void)
 {
@@ -86,7 +179,26 @@ void Draw(void)
 void DoInput(int key, int scancode, int action, int mods)
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+	{
 		blit3D->Quit(); //start the shutdown sequence
+	}
+	else if (key == GLFW_KEY_W && action == GLFW_PRESS)
+	{
+
+	}
+	else if (key == GLFW_KEY_A && action == GLFW_PRESS)
+	{
+
+	}
+	else if (key == GLFW_KEY_S && action == GLFW_PRESS)
+	{
+
+	}
+	else if (key == GLFW_KEY_D && action == GLFW_PRESS)
+	{
+
+	}
+
 }
 
 int main(int argc, char *argv[])
