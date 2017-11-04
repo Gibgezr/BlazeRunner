@@ -147,6 +147,27 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AudioEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Common\AkFilePackageLUT.cpp">
+      <Filter>Source Files\WWise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Win32\AkDefaultIOHookBlocking.cpp">
+      <Filter>Source Files\WWise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Win32\AkDefaultIOHookDeferred.cpp">
+      <Filter>Source Files\WWise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Common\AkDefaultLowLevelIODispatcher.cpp">
+      <Filter>Source Files\WWise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Common\AkFileLocationBase.cpp">
+      <Filter>Source Files\WWise</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Audiokinetic\Wwise 2016.2.2.6022\SDK\samples\SoundEngine\Common\AkFilePackage.cpp">
+      <Filter>Source Files\WWise</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Blit3DBaseFiles\GLEW\GL\glew.h">
@@ -171,6 +192,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="baseTile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioEngine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
