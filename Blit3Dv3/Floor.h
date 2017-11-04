@@ -2,7 +2,8 @@
 #include "baseTile.h"
 
 
-class FloorTile : public baseTile
+class Floor : public baseTile
 {
-	FloorTile();
+public:
+	Floor();
 };

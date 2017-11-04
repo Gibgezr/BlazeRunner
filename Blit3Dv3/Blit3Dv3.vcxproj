@@ -180,22 +180,34 @@
     <ClCompile Include="Blit3DBaseFiles\GLFW\win32_tls.c" />
     <ClCompile Include="Blit3DBaseFiles\GLFW\win32_window.c" />
     <ClCompile Include="Blit3DBaseFiles\GLFW\window.c" />
+    <ClCompile Include="Door.cpp" />
+    <ClCompile Include="DoorH.cpp" />
+    <ClCompile Include="DoorV.cpp" />
+    <ClCompile Include="Exit.cpp" />
     <ClCompile Include="Flame.cpp" />
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="map.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Space.cpp" />
     <ClCompile Include="Vent.cpp" />
+    <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Blit3DBaseFiles\GLEW\GL\glew.h" />
     <ClInclude Include="Blit3DBaseFiles\GLEW\GL\wglew.h" />
+    <ClInclude Include="Door.h" />
+    <ClInclude Include="DoorH.h" />
+    <ClInclude Include="DoorV.h" />
+    <ClInclude Include="Exit.h" />
     <ClInclude Include="Flame.h" />
     <ClInclude Include="Floor.h" />
     <ClInclude Include="baseTile.h" />
     <ClInclude Include="map.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Space.h" />
     <ClInclude Include="Vent.h" />
+    <ClInclude Include="Wall.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="level1.txt" />

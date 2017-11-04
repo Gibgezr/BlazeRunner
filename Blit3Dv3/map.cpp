@@ -109,50 +109,46 @@ bool TileMap::LoadLevel(std::string filename)
 	std::string row;
 	std::ifstream mapFile(filename);
 	if (mapFile.is_open())
-	{		
-			for (int y = 0; y < MAPHEIGHT; ++y)
+	{
+		for (int y = 0; y < MAPHEIGHT; ++y)
+		{
+			for (int x = 0; x < MAPWIDTH; ++x)
 			{
-				for (int x = 0; x < MAPWIDTH; ++x)
+				int tileNum = 0;
+				mapFile >> tileNum;
+				//TileType{ BASE, SPACE, FLOOR, WALL, DOORH, DOORV, VENT, EXIT };
+				switch (tileNum)
 				{
-					int tileNum = 0;
-					mapFile >> tileNum;
-					//TileType{ BASE, SPACE, FLOOR, WALL, DOORH, DOORV, VENT, EXIT };
-					switch (tileNum) 
-					{
-					case (int)TileType::BASE:
-						assert(0 && "BASE tile? Really?");
-						break;
-						case (int)TileType::FLOOR
-						theMap[x][y] = new baseTile();
-						theMap[x][y]->tileID = TileType::FLOOR;
-						break;
-					case '2':
-						theMap[x][y] = new baseTile();
-						theMap[x][y]->tileID = TileType::WALL;
-						break;
-					case '3':
-						theMap[x][y] = new baseTile();
-						theMap[x][y]->tileID = TileType::DOORH;
-						break;
-					case '4':
-						theMap[x][y] = new baseTile();
-						theMap[x][y]->tileID = TileType::DOORV;
-						break;
-					case '5':
-						theMap[x][y] = new baseTile();
-						theMap[x][y]->tileID = TileType::VENT;
-						break;
-					case '6':
-						theMap[x][y] = new baseTile();
-						theMap[x][y]->tileID = TileType::EXIT;
-						break;
-					default:
-
-						break;
-					}
-
+				case (int)TileType::BASE:
+					assert(0 && "BASE tile? Really?");
+					break;
+				case (int)TileType::SPACE:
+					theMap[x][y] = new Space();
+					break;
+				case (int)TileType::FLOOR:
+					theMap[x][y] = new Floor();
+					break;
+				case (int)TileType::WALL:
+					theMap[x][y] = new Wall();
+					break;
+				case (int)TileType::DOORH:
+					theMap[x][y] = new DoorH();
+					break;
+				case (int)TileType::DOORV:
+					theMap[x][y] = new DoorV();
+					break;
+				case (int)TileType::VENT:
+					theMap[x][y] = new Vent();
+					break;
+				case (int)TileType::EXIT:
+					theMap[x][y] = new Exit();
+					break;
+				default:
+					assert(0 && "BASE tile? Really?");
+					break;
 				}
-			
+
+			}
 
 		}
 		mapFile.close();
@@ -176,25 +172,25 @@ void TileMap::SaveLevel(std::string filename)
 				//TileType{ BASE, SPACE, FLOOR, WALL, DOORH, DOORV, VENT, EXIT };
 				switch (theMap[x][y]->tileID) {
 				case TileType::SPACE:
-					mapFile << '0';
+					mapFile << (int)theMap[x][y]->tileID;
 					break;
 				case  TileType::FLOOR:
-					mapFile << '1';
-					break;
-				case  TileType::WALL:
 					mapFile << '2';
 					break;
-				case  TileType::DOORH:
+				case  TileType::WALL:
 					mapFile << '3';
 					break;
-				case  TileType::DOORV:
+				case  TileType::DOORH:
 					mapFile << '4';
 					break;
-				case  TileType::VENT:
+				case  TileType::DOORV:
 					mapFile << '5';
 					break;
-				case  TileType::EXIT:
+				case  TileType::VENT:
 					mapFile << '6';
+					break;
+				case  TileType::EXIT:
+					mapFile << '7';
 					break;
 				default:
 
