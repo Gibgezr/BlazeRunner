@@ -25,6 +25,9 @@
     <Filter Include="Source Files\Blit3D basefiles\GLEW">
       <UniqueIdentifier>{71c06ed4-5318-45c3-a478-e0bb26d36907}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Map">
+      <UniqueIdentifier>{7068fde6-382d-47dc-8ab3-f6b896589a59}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Blit3DBaseFiles\GLFW\context.c">
@@ -117,6 +120,9 @@
     <ClCompile Include="map.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Vent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Blit3DBaseFiles\GLEW\GL\glew.h">
@@ -134,5 +140,13 @@
     <ClInclude Include="Flame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Vent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="level1.txt">
+      <Filter>Resource Files\Map</Filter>
+    </Text>
   </ItemGroup>
 </Project>

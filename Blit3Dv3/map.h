@@ -1,6 +1,7 @@
 #pragma once
 #include "Blit3D.h"
 #include "Flame.h"
+#include "Vent.h"
 #include<string>
 
 enum class TileType {BASE, SPACE, FLOOR, WALL, DOORH, DOORV, VENT, EXIT};
@@ -32,7 +33,7 @@ public:
 	Flame flame;
 	void Draw(); //draws all tiles and the flames
 	void Update(float seconds); //updates animations for tiles and flame
-	bool SpreadFire(); //returns true if player dies
+	bool SpreadFire(std::vector<Vent>); //returns true if player dies
 	bool LoadLevel(std::string filename); //returns false if it can't load the file
 	void SaveLevel(std::string filename);
 };

@@ -32,7 +32,8 @@ void Init()
 
 	Sprite* hdoor = blit3D->MakeSprite(0, 0, 64, 64, "Media\\H_Door_Close.png");
 
-	//tileMap.LoadLevel("level1.txt");
+	tileMap->LoadLevel("level1.txt");
+	
 	for(int y = 0; y < MAPHEIGHT; ++y)
 		for (int x = 0; x < MAPWIDTH; ++x)
 		{
