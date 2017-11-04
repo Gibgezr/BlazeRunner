@@ -109,50 +109,50 @@ bool TileMap::LoadLevel(std::string filename)
 	std::string row;
 	std::ifstream mapFile(filename);
 	if (mapFile.is_open())
-	{		
-			for (int y = 0; y < MAPHEIGHT; ++y)
+	{
+		for (int y = 0; y < MAPHEIGHT; ++y)
+		{
+			for (int x = 0; x < MAPWIDTH; ++x)
 			{
-				for (int x = 0; x < MAPWIDTH; ++x)
+				int tileNum = 0;
+				mapFile >> tileNum;
+				//TileType{ BASE, SPACE, FLOOR, WALL, DOORH, DOORV, VENT, EXIT };
+				switch (tileNum)
 				{
-					int tileNum = 0;
-					mapFile >> tileNum;
-					//TileType{ BASE, SPACE, FLOOR, WALL, DOORH, DOORV, VENT, EXIT };
-					switch (tileNum) 
-					{
-					case (int)TileType::BASE:
-						assert(0 && "BASE tile? Really?");
-						break;
-						case (int)TileType::FLOOR
-						theMap[x][y] = new baseTile();
-						theMap[x][y]->tileID = TileType::FLOOR;
-						break;
-					case '2':
-						theMap[x][y] = new baseTile();
-						theMap[x][y]->tileID = TileType::WALL;
-						break;
-					case '3':
-						theMap[x][y] = new baseTile();
-						theMap[x][y]->tileID = TileType::DOORH;
-						break;
-					case '4':
-						theMap[x][y] = new baseTile();
-						theMap[x][y]->tileID = TileType::DOORV;
-						break;
-					case '5':
-						theMap[x][y] = new baseTile();
-						theMap[x][y]->tileID = TileType::VENT;
-						break;
-					case '6':
-						theMap[x][y] = new baseTile();
-						theMap[x][y]->tileID = TileType::EXIT;
-						break;
-					default:
+				case (int)TileType::BASE:
+					assert(0 && "BASE tile? Really?");
+					break;
+				case (int)TileType::FLOOR:
+					theMap[x][y] = new baseTile();
+					theMap[x][y]->tileID = TileType::FLOOR;
+					break;
+				case '2':
+					theMap[x][y] = new baseTile();
+					theMap[x][y]->tileID = TileType::WALL;
+					break;
+				case '3':
+					theMap[x][y] = new baseTile();
+					theMap[x][y]->tileID = TileType::DOORH;
+					break;
+				case '4':
+					theMap[x][y] = new baseTile();
+					theMap[x][y]->tileID = TileType::DOORV;
+					break;
+				case '5':
+					theMap[x][y] = new baseTile();
+					theMap[x][y]->tileID = TileType::VENT;
+					break;
+				case '6':
+					theMap[x][y] = new baseTile();
+					theMap[x][y]->tileID = TileType::EXIT;
+					break;
+				default:
 
-						break;
-					}
-
+					break;
 				}
-			
+
+			}
+
 
 		}
 		mapFile.close();
