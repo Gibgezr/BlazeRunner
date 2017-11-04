@@ -15,6 +15,8 @@
 
 #include "Blit3D.h"
 
+#include "map.h"
+
 Blit3D *blit3D = NULL;
 
 //GLOBAL DATA
@@ -22,17 +24,39 @@ Sprite *backgroundSprite = NULL; //a pointer to a background sprite
 Sprite *heartSprite = NULL;		//a pointer to a heart-shaped sprite
 float angle = 0; //for rotating the hearts
 
+TileMap* tileMap;
+
 void Init()
 {
-	//load our background image: the arguments are upper-left corner x, y, width to copy, height to copy, and file name.
-	backgroundSprite = blit3D->MakeSprite(0, 0, 1920, 1080, "Media\\Logo.png");
+	tileMap = new TileMap();
 
-	//load a sprite off of a spritesheet
-	heartSprite = blit3D->MakeSprite(441, 98, 19, 16, "Media\\spritesheet.png");
+	Sprite* hdoor = blit3D->MakeSprite(0, 0, 64, 64, "Media\\H_Door_Close.png");
+
+	//tileMap.LoadLevel("level1.txt");
+	for(int y = 0; y < MAPHEIGHT; ++y)
+		for (int x = 0; x < MAPWIDTH; ++x)
+		{
+			switch (tileMap->theMap[x][y]->tileID)
+			{
+			case TileType::DOORH:
+				tileMap->theMap[x][y]->sprite = hdoor;
+				break;
+
+
+			default:
+				assert(false && "Unknown tile id!");
+				break;
+			}
+		}
+
+	tileMap->flame.spriteList.push_back(hdoor);
+	tileMap->flame.spriteList.push_back(hdoor);
+	tileMap->flame.spriteList.push_back(hdoor);
 }
 
 void DeInit(void)
 {
+	delete tileMap;
 	//any sprites/fonts still allocated are freed automatically by the Blit3D object when we destroy it
 }
 
@@ -41,6 +65,8 @@ void Update(double seconds)
 	//change the angle variable based on time passed since last update
 	angle += static_cast<float>(seconds) * 45.f;
 	if (angle > 360.f) angle -= 360.f;
+
+	tileMap->Update((float)seconds);
 }
 
 void Draw(void)
@@ -50,19 +76,8 @@ void Draw(void)
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	//draw stuff here
-
-	//draw the background in the middle of the screen
-	//the arguments to Blit(0 are the x, y pixel coords to draw the center of the sprite at, 
-	//starting as 0,0 in the bottom-left corner.
-	backgroundSprite->Blit(1920.f / 2, 1080.f / 2);
-
-	//rotate the heart:
-	//sprites have a public var called angle that determines the rotation in degrees.
-	heartSprite->angle = angle;
-	//draw a bunch of hearts, with scaling
-	for (int i = 0; i < 1920/90; ++i)
-		heartSprite->Blit(i * 90.f + 45.f,  900.f,    3.f,      3.f);
-	//                    X coord          Y coord   X scale   Y scale
+	tileMap->Draw();
+	
 }
 
 //the key codes/actions/mods for DoInput are from GLFW: check its documentation for their values
