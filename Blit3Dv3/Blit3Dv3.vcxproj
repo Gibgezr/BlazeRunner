@@ -184,6 +184,7 @@
     <ClCompile Include="Floor.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="map.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Vent.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -192,10 +193,83 @@
     <ClInclude Include="Flame.h" />
     <ClInclude Include="Floor.h" />
     <ClInclude Include="map.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Vent.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="level1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Media\allSprites_default.png" />
+    <Image Include="Media\bark.jpeg" />
+    <Image Include="Media\doors.png" />
+    <Image Include="Media\SleekBars.png" />
+    <Image Include="Media\vegetation_leaf_dry_01.png" />
+    <Image Include="Media\vegetation_sunflower_03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Media\AlarmSound.wav" />
+    <Media Include="Media\ButtonPress1.wav" />
+    <Media Include="Media\ButtonPress2.wav" />
+    <Media Include="Media\COINS Collect Chime 01.wav" />
+    <Media Include="Media\COINS Collect Chime 04.wav" />
+    <Media Include="Media\COINS Collect Impact Punch 02.wav" />
+    <Media Include="Media\COINS Collect Impact Punch 04.wav" />
+    <Media Include="Media\COINS Collect Jackpot Win 01.wav" />
+    <Media Include="Media\COINS Collect Jackpot Win 02.wav" />
+    <Media Include="Media\COINS Collect Jackpot Win 03.wav" />
+    <Media Include="Media\COINS Collect Jackpot Win Big 01.wav" />
+    <Media Include="Media\COINS Collect Treasure Drop 03.wav" />
+    <Media Include="Media\COINS Collect Treasure Drop 06.wav" />
+    <Media Include="Media\COINS Collect Treasure Drop Big 03.wav" />
+    <Media Include="Media\COINS Collect Treasure Rattle 02.wav" />
+    <Media Include="Media\DoorOpening1.wav" />
+    <Media Include="Media\DoorOpening2.wav" />
+    <Media Include="Media\FireExtinguished1.wav" />
+    <Media Include="Media\FireExtinguished2.wav" />
+    <Media Include="Media\FireStarting1.wav" />
+    <Media Include="Media\FireStarting2.wav" />
+    <Media Include="Media\FireStarting3.wav" />
+    <Media Include="Media\PlayerCollision1.wav" />
+    <Media Include="Media\PlayerCollision2.wav" />
+    <Media Include="Media\PlayerDeath1.wav" />
+    <Media Include="Media\PlayerDeath2.wav" />
+    <Media Include="Media\PlayerDeath3.wav" />
+    <Media Include="Media\PlayerDeath4.wav" />
+    <Media Include="Media\TECH INTERFACE Beep Ascend 01.wav" />
+    <Media Include="Media\TECH INTERFACE Beep Ascend 03.wav" />
+    <Media Include="Media\TECH INTERFACE Beep Ascend 04.wav" />
+    <Media Include="Media\TECH INTERFACE Computer Beeps 03.wav" />
+    <Media Include="Media\TECH INTERFACE Computer Beeps 04.wav" />
+    <Media Include="Media\TECH INTERFACE Computer Beeps 05.wav" />
+    <Media Include="Media\TECH INTERFACE Computer Beeps 08.wav" />
+    <Media Include="Media\TECH INTERFACE Computer Beeps Multiple Long 01.wav" />
+    <Media Include="Media\TECH INTERFACE Computer Beeps Multiple Short 01.wav" />
+    <Media Include="Media\TECH INTERFACE Computer Beeps Multiple Short 03.wav" />
+    <Media Include="Media\TECH INTERFACE Computer Beeps Multiple Short 05.wav" />
+    <Media Include="Media\TECH INTERFACE Computer Beeps Short 01.wav" />
+    <Media Include="Media\TECH INTERFACE Computer Beeps Short 02.wav" />
+    <Media Include="Media\TECH INTERFACE Computer Beeps Short 05.wav" />
+    <Media Include="Media\TECH INTERFACE Computer Terminal Print Beeps 03.wav" />
+    <Media Include="Media\TECH INTERFACE Computer Terminal Print Beeps 06.wav" />
+    <Media Include="Media\TECH INTERFACE Computer Terminal Print Beeps 07.wav" />
+    <Media Include="Media\TECH INTERFACE Electric Zap Beeps 01.wav" />
+    <Media Include="Media\TECH INTERFACE Electric Zap Beeps 02.wav" />
+    <Media Include="Media\TECH INTERFACE Electric Zap Beeps 05.wav" />
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps 06.wav" />
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps 08.wav" />
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps 10.wav" />
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps 12.wav" />
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps 13.wav" />
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps 14.wav" />
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps Short 01.wav" />
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps Short 03.wav" />
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps Short 05.wav" />
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps Short 07.wav" />
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps Short 09.wav" />
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps Short 11.wav" />
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps Short 12.wav" />
+    <Media Include="Media\Video_6.MOV" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

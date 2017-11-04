@@ -51,41 +51,56 @@ bool TileMap::SpreadFire(std::vector<Vent> vent)
 	bool touchedPlayer = false;
 	int xOffSet[4] = { -1,1,0,0 };
 	int yOffSet[4] = { 0,0,-1,1 };
+	int x = 0;
+	int y = 0;
+	int nowX = 0;
+	int nowY = 0;
 	//get current vent's location
 	for (int i = 0; i < vent.size(); i++)
 	{
-		int x = vent[i].x;
-		int y = vent[i].y;
+		x = vent[i].x;
+		y = vent[i].y;
 		//do checks on contiguous tiles 
 		for (int dir = 0; dir < 4; ++dir)
 		{
-			int nowX = x + xOffSet[dir];
-			int nowY = y + yOffSet[dir];
+			nowX = x + xOffSet[dir];
+			nowY = y + yOffSet[dir];
 
 			if (nowX < MAPWIDTH && nowY < MAPHEIGHT)
 			{
-
-				//do a check to see if character sprite is present on current tile
-				/*
-				if ()
+				// passable tile but Not on flame
+				if (theMap[nowX][nowY]->passable == true && theMap[nowX][nowY]->onFire == false)
 				{
-				//return true is the player is dead???
-				touchedPlayer = true;
+					// set the tile on fire
+					theMap[nowX][nowY]->onFire = true;
+
+					// check if player is on fire
+					touchedPlayer = isPlayerOnFlame(nowX, nowY);
+					if (touchedPlayer) // if yes, then no need to keep expanding the fire
+						break;
 				}
-				*/
+				// passable tile but Not on flame
+				else if (theMap[nowX][nowY]->passable == true && theMap[nowX][nowY]->onFire == true)
+				{
+					// check if player is on fire
+					touchedPlayer = isPlayerOnFlame(nowX, nowY);
+					if (touchedPlayer)
+						break;
+				}
 			}
-			else if (theMap[nowX][nowY]->passable == true && theMap[nowX][nowY]->onFire == false)
-			{
-				theMap[nowX][nowY]->onFire = true;
-			}
-
-
 		}
-
 	}
+	return touchedPlayer;
+}
 
-
-	return false; //player didn't die
+bool TileMap::isPlayerOnFlame(int nowX, int nowY)
+{
+	bool isOnFlame = false;
+	if (player.x == nowX && player.y == nowY)
+	{
+		isOnFlame = true;
+	}
+	return isOnFlame;
 }
 
 bool TileMap::LoadLevel(std::string filename)

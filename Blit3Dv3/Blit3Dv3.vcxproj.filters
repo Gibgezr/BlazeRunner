@@ -28,6 +28,24 @@
     <Filter Include="Resource Files\Map">
       <UniqueIdentifier>{7068fde6-382d-47dc-8ab3-f6b896589a59}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Media">
+      <UniqueIdentifier>{cead7793-1aa3-45c9-b93c-a8c485db6d24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Media\Art">
+      <UniqueIdentifier>{a589ac93-4886-4f10-8159-1ab13789d855}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Media\Sound">
+      <UniqueIdentifier>{5c8f0158-549f-481e-b051-b2711e89a5cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Media\Art\challeng">
+      <UniqueIdentifier>{ab2fa180-d82b-4453-ab8d-38f94cfd4e69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Media\Video">
+      <UniqueIdentifier>{6c7b706a-a8ed-4c4c-9d29-72ef06363f69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Media\Sound\Challenge">
+      <UniqueIdentifier>{bce77c51-948b-49ff-86c9-46a9058c14d6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Blit3DBaseFiles\GLFW\context.c">
@@ -123,6 +141,9 @@
     <ClCompile Include="Vent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Blit3DBaseFiles\GLEW\GL\glew.h">
@@ -143,10 +164,221 @@
     <ClInclude Include="Vent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="level1.txt">
       <Filter>Resource Files\Map</Filter>
     </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Media\allSprites_default.png">
+      <Filter>Resource Files\Media\Art\challeng</Filter>
+    </Image>
+    <Image Include="Media\bark.jpeg">
+      <Filter>Resource Files\Media\Art\challeng</Filter>
+    </Image>
+    <Image Include="Media\doors.png">
+      <Filter>Resource Files\Media\Art\challeng</Filter>
+    </Image>
+    <Image Include="Media\SleekBars.png">
+      <Filter>Resource Files\Media\Art\challeng</Filter>
+    </Image>
+    <Image Include="Media\vegetation_leaf_dry_01.png">
+      <Filter>Resource Files\Media\Art\challeng</Filter>
+    </Image>
+    <Image Include="Media\vegetation_sunflower_03.png">
+      <Filter>Resource Files\Media\Art\challeng</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Media\Video_6.MOV">
+      <Filter>Resource Files\Media\Video</Filter>
+    </Media>
+    <Media Include="Media\COINS Collect Chime 01.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\COINS Collect Chime 04.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\COINS Collect Impact Punch 02.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\COINS Collect Impact Punch 04.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\COINS Collect Jackpot Win 01.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\COINS Collect Jackpot Win 02.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\COINS Collect Jackpot Win 03.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\COINS Collect Jackpot Win Big 01.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\COINS Collect Treasure Drop 03.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\COINS Collect Treasure Drop 06.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\COINS Collect Treasure Drop Big 03.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\COINS Collect Treasure Rattle 02.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Beep Ascend 01.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Beep Ascend 03.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Beep Ascend 04.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Computer Beeps 03.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Computer Beeps 04.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Computer Beeps 05.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Computer Beeps 08.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Computer Beeps Multiple Long 01.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Computer Beeps Multiple Short 01.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Computer Beeps Multiple Short 03.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Computer Beeps Multiple Short 05.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Computer Beeps Short 01.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Computer Beeps Short 02.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Computer Beeps Short 05.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Computer Terminal Print Beeps 03.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Computer Terminal Print Beeps 06.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Computer Terminal Print Beeps 07.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Electric Zap Beeps 01.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Electric Zap Beeps 02.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Electric Zap Beeps 05.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps 06.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps 08.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps 10.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps 12.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps 13.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps 14.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps Short 01.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps Short 03.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps Short 05.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps Short 07.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps Short 09.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps Short 11.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\TECH INTERFACE Wacky Machine Beeps Short 12.wav">
+      <Filter>Resource Files\Media\Sound\Challenge</Filter>
+    </Media>
+    <Media Include="Media\AlarmSound.wav">
+      <Filter>Resource Files\Media\Sound</Filter>
+    </Media>
+    <Media Include="Media\ButtonPress1.wav">
+      <Filter>Resource Files\Media\Sound</Filter>
+    </Media>
+    <Media Include="Media\ButtonPress2.wav">
+      <Filter>Resource Files\Media\Sound</Filter>
+    </Media>
+    <Media Include="Media\DoorOpening1.wav">
+      <Filter>Resource Files\Media\Sound</Filter>
+    </Media>
+    <Media Include="Media\DoorOpening2.wav">
+      <Filter>Resource Files\Media\Sound</Filter>
+    </Media>
+    <Media Include="Media\FireExtinguished1.wav">
+      <Filter>Resource Files\Media\Sound</Filter>
+    </Media>
+    <Media Include="Media\FireExtinguished2.wav">
+      <Filter>Resource Files\Media\Sound</Filter>
+    </Media>
+    <Media Include="Media\FireStarting1.wav">
+      <Filter>Resource Files\Media\Sound</Filter>
+    </Media>
+    <Media Include="Media\FireStarting2.wav">
+      <Filter>Resource Files\Media\Sound</Filter>
+    </Media>
+    <Media Include="Media\FireStarting3.wav">
+      <Filter>Resource Files\Media\Sound</Filter>
+    </Media>
+    <Media Include="Media\PlayerCollision1.wav">
+      <Filter>Resource Files\Media\Sound</Filter>
+    </Media>
+    <Media Include="Media\PlayerCollision2.wav">
+      <Filter>Resource Files\Media\Sound</Filter>
+    </Media>
+    <Media Include="Media\PlayerDeath1.wav">
+      <Filter>Resource Files\Media\Sound</Filter>
+    </Media>
+    <Media Include="Media\PlayerDeath2.wav">
+      <Filter>Resource Files\Media\Sound</Filter>
+    </Media>
+    <Media Include="Media\PlayerDeath3.wav">
+      <Filter>Resource Files\Media\Sound</Filter>
+    </Media>
+    <Media Include="Media\PlayerDeath4.wav">
+      <Filter>Resource Files\Media\Sound</Filter>
+    </Media>
   </ItemGroup>
 </Project>
